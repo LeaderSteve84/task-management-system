@@ -12,12 +12,12 @@ const connectDB = async (mongodbUri) => {
 
   try {
     await mongoose.connect(mongodbUri, {
-      serverSelectionTimeoutMS: 30000, // Increased timeout to 10 seconds
+      serverSelectionTimeoutMS: 30000,
     });
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error.message);
-    throw error; // Rethrow to allow caller to handle
+    throw error;
   }
 };
 
