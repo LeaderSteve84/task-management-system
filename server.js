@@ -1,17 +1,29 @@
 const app = require('./app');
-const db = require("./src/db/dbConnection");
-
-require("dotenv").config();
-
-const MONGO_URI = process.env.MONGO_URI;
+const connectDB = require("./src/db/dbConnection");
 
 const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI;
 
-app.listen(PORT, async () => {
+// Start the server and connect to MongoDB
+const startServer = async () => {
   try {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    await db(MONGO_URI);
+    // Connect to MongoDB
+    await connectDB(MONGO_URI);
+
+    // Start Express server
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
   } catch (error) {
-    console.error("Error starting the server:", error.message);
+    console.error("Failed to start server:", error.message);
+    process.exit(1); // Exit process on failure
   }
+};
+
+// Handle server startup errors (e.g port in use)
+app.on('error', (error) => {
+  console.error('Server error:', error.message);
+  process.exit(1);
 });
+
+startServer();
