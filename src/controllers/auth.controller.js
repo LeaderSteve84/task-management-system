@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const User = require("../models/Auth.model");
 const { hashPassword, generateToken, comparePassword } = require("../utils/auth");
 
-const user = async (req, res) => {
+const register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -75,4 +75,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { user, login };
+module.exports = { register, login };
