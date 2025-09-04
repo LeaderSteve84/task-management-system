@@ -31,13 +31,11 @@ npm install
 
 Create a .env file in the root directory:touch .env
 
-
-Add:MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/task-management?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/task-management?retryWrites=true&w=majority
 JWT_SECRET=your-secure-secret-key
 PORT=3000
 DEV_URL=http://localhost:3000
 NODE_ENV=development
-
 
 Replace <username>, <password>, and <cluster-name> with your MongoDB Atlas credentials. Encode special characters in the password (e.g., @ → %40).
 
@@ -64,15 +62,23 @@ Server is running on http://localhost:3000
 Full API documentation is available on Postman:Task Management System API Documentation
 - Postman Collection: [Click here to view](https://documenter.getpostman.com/view/47095943/2sB3HjPMu9)
 
-
 ## Project Structure
 task-management-system/
 ├── src/
 │   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   └── task.controller.js
 │   ├── middleware/
+│   │   ├── auth.js
+│   │   └── validators/userValidator.js
 │   ├── models/
+│   │   ├── Auth.model.js
+│   │   └── task.model.js
 │   ├── routes/
+│   │   ├── auth.routes.js
+│   │   └── task.routes.js
 │   └── db/
+│       └── dbConnection.js
 ├── .env
 ├── .gitignore
 ├── app.js
@@ -84,24 +90,28 @@ task-management-system/
 
 ## Troubleshooting
 
-#### MongoDB Connection Issues:
-- Verify MONGO_URI in .env.
-- Ensure the Atlas cluster is running and the database user has correct permissions.
-- Check network access in Atlas.
+- MongoDB Connection Issues:
+	- Verify MONGO_URI in .env.
+	- Ensure the Atlas cluster is running and the database user has correct permissions.
+	- Check network access in Atlas.
 
-## Timeout Errors:
-The connectDB function uses a 30-second timeout.
+- Timeout Errors:
+	- The connectDB function uses a 30-second timeout.
 
-### Debugging:
-Enable Mongoose debug logging in src/db/dbConnection.js:mongoose.set('debug', process.env.NODE_ENV === 'development');
+- Debugging:
+	- Enable Mongoose debug logging in src/db/dbConnection.js:mongoose.set('debug', process.env.NODE_ENV === 'development');
 
 ## Contributing
 
-- Fork the repository.
-- Create a feature branch (git checkout -b feature/your-feature).
-- Commit changes (git commit -m "Add your feature").
-- Push to the branch (git push origin feature/your-feature).
-- Open a pull request.
+1. Fork the repository.
+2. Create a feature branch (git checkout -b feature/your-feature).
+3. Commit changes (git commit -m "Add your feature").
+4. Push to the branch (git push origin feature/your-feature).
+5. Open a pull request.
 
-## License
-MIT License
+### Author
+Stephen Adah
+GitHub: @LeaderSteve84
+
+### License
+This project is licensed for educational purposes as part of a technical assessment.
