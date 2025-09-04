@@ -63,14 +63,14 @@ const getAllTasks = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: 'Taks retrieved successfully',
+      message: 'Tasks retrieved successfully',
       data: tasks,
     });
   } catch (error) {
     console.error('Error fetching tasks:', error.message);
     res.status(500).json({
       success: false,
-      message: 'Faileed to fetch tasks',
+      message: 'Failed to fetch tasks',
       error: error.message,
     });
   }
@@ -80,7 +80,7 @@ const getAllTasks = async (req, res) => {
 const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, descripton, status } = req.body;
+    const { title, description, status } = req.body;
     const userId = req.user.id;
 
     // Validate input
