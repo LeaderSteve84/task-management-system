@@ -19,7 +19,7 @@ A RESTful API for managing user authentication and tasks, built with Node.js, Ex
 ## Setup
 
 - Clone the Repository:
-- git clone https://github.com/<your-username>/task-management-system.git
+- git clone https://github.com/LeaderSteve84/task-management-system.git
 - cd task-management-system
 
 
@@ -61,12 +61,8 @@ Expected output:MongoDB connected successfully
 Server is running on http://localhost:3000
 
 ## API Documentation
-- Full API documentation is available on Postman:Task Management System API Documentation
-- Testing with Postman
-
-- Import Collection:
-- Import task-management-api.postman_collection.json into Postman.
-- Or via https://documenter.getpostman.com/view/47095943/2sB3HjPMu9
+Full API documentation is available on Postman:Task Management System API Documentation
+- Postman Collection: [Click here to view](https://documenter.getpostman.com/view/47095943/2sB3HjPMu9)
 
 
 ## Project Structure
@@ -94,7 +90,7 @@ task-management-system/
 - Check network access in Atlas.
 
 ## Timeout Errors:
-The connectDB function uses a 30-second timeout with retries for reliability.
+The connectDB function uses a 30-second timeout.
 
 ### Debugging:
 Enable Mongoose debug logging in src/db/dbConnection.js:mongoose.set('debug', process.env.NODE_ENV === 'development');
