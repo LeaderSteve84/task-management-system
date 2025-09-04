@@ -30,7 +30,10 @@ app.use(morgan("dev"));
 
 // Root route
 app.get('/', (req, res) => {
-  res.status(200).json({ success: true, message: 'Welcome to Task Management System API'});
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to Task Management System API'
+  });
 });
 
 // Mount API route
